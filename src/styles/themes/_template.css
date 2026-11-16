@@ -1,0 +1,39 @@
+/*
+ * THEME TEMPLATE — never imported or loaded by any view.
+ *
+ * It lists every variable a theme must define. To create a new theme:
+ *   1. Copy this file to `<theme-name>.css`.
+ *   2. Replace `template` in the selector with the theme name.
+ *   3. Give every variable a value (none may be left out).
+ *   4. Import the new file in `src/styles/global.css`.
+ */
+:root[data-theme="template"] {
+  /* Fonts */
+  --theme-font-family-base: ;
+  --theme-font-family-mono: ;
+  --theme-font-size-base: ;
+  --theme-font-size-small: ;
+  --theme-font-weight-normal: ;
+  --theme-font-weight-bold: ;
+
+  /* App */
+  --theme-color-app-bg: ;
+  --theme-color-text: ;
+  --theme-color-text-muted: ;
+  --theme-color-accent: ;
+
+  /* Sidebar (left column) */
+  --theme-color-sidebar-bg: ;
+  --theme-color-sidebar-border: ;
+  --theme-color-menu-item-text: ;
+  --theme-color-menu-item-hover-bg: ;
+  --theme-color-menu-item-active-bg: ;
+  --theme-color-menu-item-active-text: ;
+
+  /* Main content (right column) */
+  --theme-color-main-bg: ;
+
+  /* Scrollbar */
+  --theme-color-scrollbar-thumb: ;
+  --theme-color-scrollbar-track: ;
+}

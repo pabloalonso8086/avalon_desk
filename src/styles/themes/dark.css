@@ -1,0 +1,31 @@
+/* Dark theme — must define every variable in _template.css */
+:root[data-theme="dark"] {
+  /* Fonts */
+  --theme-font-family-base: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --theme-font-family-mono: "Cascadia Code", Consolas, monospace;
+  --theme-font-size-base: 14px;
+  --theme-font-size-small: 12px;
+  --theme-font-weight-normal: 400;
+  --theme-font-weight-bold: 600;
+
+  /* App */
+  --theme-color-app-bg: #0f1115;
+  --theme-color-text: #e6e8eb;
+  --theme-color-text-muted: #9aa1ab;
+  --theme-color-accent: #a78bfa;
+
+  /* Sidebar (left column) */
+  --theme-color-sidebar-bg: #161a20;
+  --theme-color-sidebar-border: #262b33;
+  --theme-color-menu-item-text: #e6e8eb;
+  --theme-color-menu-item-hover-bg: #222831;
+  --theme-color-menu-item-active-bg: #2e2650;
+  --theme-color-menu-item-active-text: #ddd6fe;
+
+  /* Main content (right column) */
+  --theme-color-main-bg: #0f1115;
+
+  /* Scrollbar */
+  --theme-color-scrollbar-thumb: #3a414c;
+  --theme-color-scrollbar-track: transparent;
+}

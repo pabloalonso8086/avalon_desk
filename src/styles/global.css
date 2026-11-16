@@ -1,0 +1,106 @@
+/*
+ * Global stylesheet: every style of the app lives here.
+ * Colors and fonts always come from theme variables (see ./themes/_template.css).
+ */
+@import "tailwindcss";
+@import "./themes/light.css";
+@import "./themes/dark.css";
+
+/* ---------- Base ---------- */
+@layer base {
+  html,
+  body,
+  #app-root {
+    @apply m-0 h-full w-full p-0 overflow-hidden;
+  }
+
+  body {
+    background-color: var(--theme-color-app-bg);
+    color: var(--theme-color-text);
+    font-family: var(--theme-font-family-base);
+    font-size: var(--theme-font-size-base);
+    font-weight: var(--theme-font-weight-normal);
+  }
+
+  * {
+    scrollbar-color: var(--theme-color-scrollbar-thumb) var(--theme-color-scrollbar-track);
+    scrollbar-width: thin;
+  }
+}
+
+/* ---------- Layout: two columns, no gaps or margins ---------- */
+@layer components {
+  .app-layout {
+    @apply m-0 flex h-screen w-screen p-0;
+  }
+
+  .sidebar {
+    @apply m-0 flex h-full w-60 shrink-0 flex-col p-0;
+    background-color: var(--theme-color-sidebar-bg);
+    border-right: 1px solid var(--theme-color-sidebar-border);
+  }
+
+  .main-content {
+    @apply m-0 h-full min-w-0 flex-1 overflow-auto p-0;
+    background-color: var(--theme-color-main-bg);
+  }
+
+  /* ---------- Sidebar pieces ---------- */
+  .app-logo {
+    @apply flex shrink-0 items-center gap-2 px-4 py-4;
+  }
+
+  .app-logo__image {
+    @apply h-8 w-8;
+  }
+
+  .app-logo__name {
+    color: var(--theme-color-text);
+    font-size: 1.15em;
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .menu-item {
+    @apply mx-2 block cursor-pointer truncate rounded-md px-3 py-1.5 no-underline;
+    color: var(--theme-color-menu-item-text);
+  }
+
+  .menu-item:hover {
+    background-color: var(--theme-color-menu-item-hover-bg);
+  }
+
+  .menu-item--active {
+    background-color: var(--theme-color-menu-item-active-bg);
+    color: var(--theme-color-menu-item-active-text);
+  }
+
+  .menu-item--disabled {
+    @apply cursor-default;
+  }
+
+  .project-menu {
+    @apply mt-2 flex min-h-0 flex-1 flex-col;
+  }
+
+  .project-menu__title {
+    @apply shrink-0 truncate px-5 pt-2 pb-1 uppercase tracking-wide;
+    color: var(--theme-color-text-muted);
+    font-size: var(--theme-font-size-small);
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .project-menu__list {
+    @apply m-0 min-h-0 flex-1 list-none overflow-x-hidden overflow-y-auto p-0;
+  }
+
+  .project-menu__empty {
+    @apply truncate px-5 py-1.5;
+    color: var(--theme-color-text-muted);
+    font-size: var(--theme-font-size-small);
+  }
+
+  .sidebar__footer {
+    @apply shrink-0 py-2;
+    border-top: 1px solid var(--theme-color-sidebar-border);
+  }
+}

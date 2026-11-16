@@ -1,0 +1,19 @@
+faro/.cache/
+
+# Dependencies and build output
+node_modules/
+dist/
+.output/
+.tanstack/
+.vinxi/
+
+# Tauri / Rust
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# Runtime data (created next to the executable)
+bbdd/
+notes/
+docs/
+
+*.log

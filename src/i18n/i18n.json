@@ -1,0 +1,90 @@
+{
+  "appLogo": {
+    "languages": {
+      "en": {
+        "name": "Avalon",
+        "alt": "Avalon logo"
+      },
+      "es": {
+        "name": "Avalon",
+        "alt": "Logotipo de Avalon"
+      }
+    }
+  },
+  "homeMenuItem": {
+    "languages": {
+      "en": {
+        "label": "Home"
+      },
+      "es": {
+        "label": "Inicio"
+      }
+    }
+  },
+  "projectMenu": {
+    "languages": {
+      "en": {
+        "title": "Projects",
+        "empty": "No projects yet"
+      },
+      "es": {
+        "title": "Proyectos",
+        "empty": "Aún no hay proyectos"
+      }
+    }
+  },
+  "settingsMenuItem": {
+    "languages": {
+      "en": {
+        "label": "Settings"
+      },
+      "es": {
+        "label": "Ajustes"
+      }
+    }
+  },
+  "statuses": {
+    "languages": {
+      "en": {
+        "canceledName": "Canceled",
+        "canceledDescription": "The started work or the proposal has been canceled and will not be developed, at least not with the current requirements.",
+        "doneName": "Done",
+        "doneDescription": "The work has been deployed, delivered and validated. The task is closed as finished.",
+        "testingName": "Testing",
+        "testingDescription": "The changes have been deployed and delivered to the requester. Pending confirmation that the work does what was requested.",
+        "deployRequestedName": "Deploy Requested",
+        "deployRequestedDescription": "The work is done. The PR has been requested and is pending the approver.",
+        "triageName": "Triage",
+        "triageDescription": "It is a request. Work has not started yet, nor has it been validated that it will start.",
+        "backlogName": "Backlog",
+        "backlogDescription": "The work will be done, but requirements still need to be gathered, hours estimated or a delivery date proposed.",
+        "pausedName": "Paused",
+        "pausedDescription": "Development is paused by decision.",
+        "blockedName": "Blocked",
+        "blockedDescription": "Another development or a third-party response prevents progress on the ongoing development.",
+        "inProgressName": "In Progress",
+        "inProgressDescription": "The work is being done."
+      },
+      "es": {
+        "canceledName": "Cancelado",
+        "canceledDescription": "Los trabajos iniciados o la propuesta se han cancelado y no se desarrollarán, al menos, con los requerimientos actuales.",
+        "doneName": "Terminado",
+        "doneDescription": "El trabajo se ha desplegado, entregado y validado. Se cierra la tarea como terminada.",
+        "testingName": "En pruebas",
+        "testingDescription": "Los cambios se han desplegado y entregado al peticionario. Está pendiente que confirme que el trabajo hace lo que se ha pedido.",
+        "deployRequestedName": "Despliegue solicitado",
+        "deployRequestedDescription": "Los trabajos están realizados. Se ha solicitado el PR y está pendiente del aprobador.",
+        "triageName": "Triaje",
+        "triageDescription": "Es una petición. Aún no se ha iniciado el trabajo ni se ha validado que se vaya a iniciar.",
+        "backlogName": "Backlog",
+        "backlogDescription": "El trabajo se va a realizar, pero aún queda tomar requerimientos, valorar horas o proponer fecha de entrega.",
+        "pausedName": "Pausado",
+        "pausedDescription": "Por decisión tomada, se pausa el desarrollo.",
+        "blockedName": "Bloqueado",
+        "blockedDescription": "Otro desarrollo o respuesta de terceros impide progresar con el desarrollo en curso.",
+        "inProgressName": "En curso",
+        "inProgressDescription": "El trabajo se está realizando."
+      }
+    }
+  }
+}

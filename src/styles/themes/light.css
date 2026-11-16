@@ -1,0 +1,31 @@
+/* Light theme — must define every variable in _template.css */
+:root[data-theme="light"] {
+  /* Fonts */
+  --theme-font-family-base: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --theme-font-family-mono: "Cascadia Code", Consolas, monospace;
+  --theme-font-size-base: 14px;
+  --theme-font-size-small: 12px;
+  --theme-font-weight-normal: 400;
+  --theme-font-weight-bold: 600;
+
+  /* App */
+  --theme-color-app-bg: #ffffff;
+  --theme-color-text: #1f2328;
+  --theme-color-text-muted: #656d76;
+  --theme-color-accent: #6d28d9;
+
+  /* Sidebar (left column) */
+  --theme-color-sidebar-bg: #f6f7f9;
+  --theme-color-sidebar-border: #e3e6ea;
+  --theme-color-menu-item-text: #1f2328;
+  --theme-color-menu-item-hover-bg: #eaecf0;
+  --theme-color-menu-item-active-bg: #ede9fe;
+  --theme-color-menu-item-active-text: #5b21b6;
+
+  /* Main content (right column) */
+  --theme-color-main-bg: #ffffff;
+
+  /* Scrollbar */
+  --theme-color-scrollbar-thumb: #c8ccd2;
+  --theme-color-scrollbar-track: transparent;
+}
