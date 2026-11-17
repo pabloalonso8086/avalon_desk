@@ -7,7 +7,10 @@ use rusqlite::Connection;
 use std::path::Path;
 
 /// Ordered migrations. The position + 1 is the schema version (`PRAGMA user_version`).
-const MIGRATIONS: &[&str] = &[include_str!("../../migrations/001_initial_schema.sql")];
+const MIGRATIONS: &[&str] = &[
+    include_str!("../../migrations/001_initial_schema.sql"),
+    include_str!("../../migrations/002_repos_path_epics_repo.sql"),
+];
 
 /// Opens (or creates) the database and applies pending migrations.
 pub fn open(path: &Path) -> rusqlite::Result<Connection> {
