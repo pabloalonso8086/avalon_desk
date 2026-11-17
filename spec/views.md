@@ -18,7 +18,7 @@ Fuente: `initial_prompt.md`. Modelo de datos: `spec/data-model.md`.
 - **Temas:**
   - `_template.css` contiene todas las variables sin valores y nunca se carga en una vista.
   - Temas base: `Light` y `Dark`, con todas las variables de la plantilla y sus valores.
-- Todos los separadores entre columnas o paneles son un borde fino que se arrastra con el ratón para cambiar el tamaño.
+- **Separadores arrastrables:** solo se pueden arrastrar los separadores que se especifiquen expresamente. El resto son fijos (por ejemplo, el menú de Ajustes). Ver *Separador arrastrable* en el layout principal.
 
 ## Objetivo de la aplicación
 
@@ -31,6 +31,16 @@ Un contenedor principal para los ajustes visuales globales, sin márgenes ni esp
 1. **Sidebar** (izquierda): los menús.
 2. **Contenedor de la vista principal** (derecha).
 
+### Separador arrastrable (`ResizeHandle`)
+
+El borde entre el sidebar y la vista principal se arrastra con el ratón para cambiar el ancho del sidebar.
+
+- Zona de agarre invisible de unos 6 px sobre el borde de 1 px. Al pasar por encima, el cursor cambia a `↔` y el borde se resalta con el color de acento.
+- Mientras se arrastra se desactiva la selección de texto. El ancho se limita entre un mínimo y un máximo.
+- Doble clic: vuelve al ancho por defecto. Con el foco en el separador, las flechas lo ajustan.
+- El componente admite una variante vertical (cursor `↕`) para separar paneles apilados, pero solo se usará donde se especifique.
+- **Se guarda en `settings.json`** (`layout.sidebar`): ancho actual (`width`), ancho por defecto (`default_width`), mínimo (`min_width`) y máximo (`max_width`). Valores iniciales: 240, 240, 180 y 480 px. El ancho se guarda al soltar el ratón.
+
 ## Sidebar
 
 De arriba abajo:
@@ -40,7 +50,39 @@ De arriba abajo:
 3. **Listado de proyectos**: cada proyecto es una entrada del menú.
    - Va dentro de un div con scroll vertical si el contenido supera el alto.
    - El texto que no cabe en horizontal se corta con "…".
-4. **Menú "Ajustes"**: fijo en la parte inferior. Cada ajuste indica dónde se guarda: en `settings.json` o en la base de datos (ver `spec/data-model.md`).
+4. **Menú "Ajustes"**: fijo en la parte inferior. Abre la vista *Ajustes* (ruta `/settings`). Cada ajuste indica dónde se guarda: en `settings.json` o en la base de datos (ver `spec/data-model.md`).
+
+El listado de proyectos se recarga cuando se crea o actualiza un proyecto (evento de ventana `avalon:projects-changed`).
+
+## Ajustes (`SettingsView`)
+
+Dos columnas:
+
+- **Izquierda:** menú vertical, un `<ul>` con una entrada (`<li>`) por ajuste. Los diseños se aplicarán más adelante.
+- **Derecha:** el ajuste seleccionado.
+
+Pulsar una entrada del menú, aunque ya esté activa, vuelve a montar su panel: se recargan los datos y se pierden los cambios sin guardar.
+
+### Ajuste "Projects"
+
+Se guarda en la base de datos (`projects`, `repos`, `project_repos`).
+
+**Formulario** (arriba):
+
+- **Nombre:** obligatorio. El botón de guardar está deshabilitado mientras esté vacío.
+- **Slug:** se genera a partir del nombre mientras no se edite a mano. Es editable. Al guardar, el backend lo normaliza y lo hace único con `_2`, `_3`… Si se deja vacío, se genera del nombre.
+- **Estado:** desplegable con todos los estados. Por defecto, `Triage`. Si el proyecto tiene épicas o macros, el desplegable está bloqueado y muestra un aviso: su estado solo cambia por propagación. El backend también lo impone e ignora el estado recibido. Al pasar a `Done` o `Canceled` se rellena `closed_at`; con cualquier otro estado se vacía. La propagación a ítems inferiores se aplicará cuando existan épicas y macros.
+- **Fecha límite:** opcional, vacía por defecto. Se guarda como Unix segundos a las 00:00 locales.
+- **Repositorios:**
+  - Lista de repositorios asociados. Cada uno muestra su URL, su ruta local editable y el botón "Desasociar", que solo borra la fila de `project_repos`, nunca el repositorio.
+  - Desplegable con los repositorios existentes no asociados, para asociarlos.
+  - Formulario de repositorio nuevo (URL + ruta). Pulsar Enter en sus campos solo añade el repositorio, nunca guarda el proyecto. Al añadirlo se guarda en `repos` en el momento y queda asociado en el formulario. La asociación se guarda con el proyecto. Una URL repetida da error.
+  - **Ruta (`PathField`):** input de texto editable más el botón "Examinar…", que abre el selector de carpetas nativo y escribe el resultado en el input. Si se edita a mano, al perder el foco se comprueba que la carpeta existe. Si no existe, el borde se pone rojo, pero no se bloquea el guardado.
+  - La ruta pertenece al repositorio: cambiarla afecta a todos los proyectos que lo usan. Al guardar, primero se actualizan las rutas cambiadas y después el proyecto.
+
+Vacío, el botón es **"Crear"**. Al guardar, el formulario pasa a modo edición del proyecto guardado.
+
+**Catálogo** (debajo): tabla con nombre, slug, estado, fecha límite y número de repositorios. Al pulsar una fila, el formulario se rellena con los datos actuales y el botón pasa a ser **"Actualizar"**.
 
 ## `main_view`
 

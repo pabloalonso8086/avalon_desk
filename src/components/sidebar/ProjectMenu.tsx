@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "~/i18n";
 import { listProjects } from "~/lib/api/projects";
 import type { ProjectMenuEntry } from "~/lib/api/projects";
+import { PROJECTS_CHANGED } from "~/lib/events";
 import { ProjectMenuItem } from "./ProjectMenuItem";
 
 /** Project list inside the sidebar. Scrolls vertically when it overflows. */
@@ -11,13 +12,19 @@ export function ProjectMenu() {
 
   useEffect(() => {
     let cancelled = false;
-    listProjects()
-      .then((result) => {
-        if (!cancelled) setProjects(result);
-      })
-      .catch((error: unknown) => console.error("Could not load projects", error));
+    const load = () => {
+      listProjects()
+        .then((result) => {
+          if (!cancelled) setProjects(result);
+        })
+        .catch((error: unknown) => console.error("Could not load projects", error));
+    };
+    load();
+    // Reload when projects are created or updated (e.g. from Settings > Projects).
+    window.addEventListener(PROJECTS_CHANGED, load);
     return () => {
       cancelled = true;
+      window.removeEventListener(PROJECTS_CHANGED, load);
     };
   }, []);
 

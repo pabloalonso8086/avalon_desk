@@ -22,8 +22,33 @@
   --theme-color-menu-item-active-bg: #2e2650;
   --theme-color-menu-item-active-text: #ddd6fe;
 
+  /* Draggable separator */
+  --theme-color-resize-handle: #262b33;
+  --theme-color-resize-handle-active: #a78bfa;
+
   /* Main content (right column) */
   --theme-color-main-bg: #0f1115;
+
+  /* Forms */
+  --theme-color-input-bg: #161a20;
+  --theme-color-input-border: #30363d;
+  --theme-color-input-focus-border: #a78bfa;
+  --theme-color-danger: #f85149;
+  --theme-color-success: #3fb950;
+
+  /* Buttons */
+  --theme-color-button-bg: #7c3aed;
+  --theme-color-button-text: #ffffff;
+  --theme-color-button-hover-bg: #6d28d9;
+  --theme-color-button-secondary-bg: #222831;
+  --theme-color-button-secondary-text: #e6e8eb;
+  --theme-color-button-secondary-hover-bg: #2d343e;
+
+  /* Tables */
+  --theme-color-table-border: #262b33;
+  --theme-color-table-header-bg: #161a20;
+  --theme-color-table-row-hover-bg: #1c2128;
+  --theme-color-table-row-selected-bg: #2e2650;
 
   /* Scrollbar */
   --theme-color-scrollbar-thumb: #3a414c;

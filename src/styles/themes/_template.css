@@ -30,8 +30,33 @@
   --theme-color-menu-item-active-bg: ;
   --theme-color-menu-item-active-text: ;
 
+  /* Draggable separator */
+  --theme-color-resize-handle: ;
+  --theme-color-resize-handle-active: ;
+
   /* Main content (right column) */
   --theme-color-main-bg: ;
+
+  /* Forms */
+  --theme-color-input-bg: ;
+  --theme-color-input-border: ;
+  --theme-color-input-focus-border: ;
+  --theme-color-danger: ;
+  --theme-color-success: ;
+
+  /* Buttons */
+  --theme-color-button-bg: ;
+  --theme-color-button-text: ;
+  --theme-color-button-hover-bg: ;
+  --theme-color-button-secondary-bg: ;
+  --theme-color-button-secondary-text: ;
+  --theme-color-button-secondary-hover-bg: ;
+
+  /* Tables */
+  --theme-color-table-border: ;
+  --theme-color-table-header-bg: ;
+  --theme-color-table-row-hover-bg: ;
+  --theme-color-table-row-selected-bg: ;
 
   /* Scrollbar */
   --theme-color-scrollbar-thumb: ;

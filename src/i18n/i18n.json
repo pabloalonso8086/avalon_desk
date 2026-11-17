@@ -42,5 +42,177 @@
         "label": "Ajustes"
       }
     }
+  },
+  "settingsMenu": {
+    "languages": {
+      "en": {
+        "projects": "Projects"
+      },
+      "es": {
+        "projects": "Proyectos"
+      }
+    }
+  },
+  "projectSettings": {
+    "languages": {
+      "en": {
+        "loadError": "Could not load the data:"
+      },
+      "es": {
+        "loadError": "No se han podido cargar los datos:"
+      }
+    }
+  },
+  "projectForm": {
+    "languages": {
+      "en": {
+        "titleNew": "New project",
+        "titleEdit": "Edit project",
+        "name": "Name",
+        "slug": "Slug",
+        "slugHint": "Generated from the name. You can edit it.",
+        "status": "Status",
+        "statusLocked": "Locked: the project has epics or macros. Its status follows theirs.",
+        "deadline": "Deadline",
+        "repos": "Repositories",
+        "create": "Create",
+        "update": "Update",
+        "saved": "Project saved",
+        "errorNameRequired": "The name is required",
+        "errorGeneric": "Could not save the project:"
+      },
+      "es": {
+        "titleNew": "Nuevo proyecto",
+        "titleEdit": "Editar proyecto",
+        "name": "Nombre",
+        "slug": "Slug",
+        "slugHint": "Se genera a partir del nombre. Puedes editarlo.",
+        "status": "Estado",
+        "statusLocked": "Bloqueado: el proyecto tiene épicas o macros. Su estado sigue al de ellas.",
+        "deadline": "Fecha límite",
+        "repos": "Repositorios",
+        "create": "Crear",
+        "update": "Actualizar",
+        "saved": "Proyecto guardado",
+        "errorNameRequired": "El nombre es obligatorio",
+        "errorGeneric": "No se ha podido guardar el proyecto:"
+      }
+    }
+  },
+  "projectRepoList": {
+    "languages": {
+      "en": {
+        "empty": "No linked repositories"
+      },
+      "es": {
+        "empty": "No hay repositorios asociados"
+      }
+    }
+  },
+  "projectRepoItem": {
+    "languages": {
+      "en": {
+        "path": "Local path",
+        "unlink": "Unlink"
+      },
+      "es": {
+        "path": "Ruta local",
+        "unlink": "Desasociar"
+      }
+    }
+  },
+  "repoPicker": {
+    "languages": {
+      "en": {
+        "label": "Link an existing repository",
+        "placeholder": "Select a repository",
+        "link": "Link",
+        "none": "No other repositories available"
+      },
+      "es": {
+        "label": "Asociar un repositorio existente",
+        "placeholder": "Selecciona un repositorio",
+        "link": "Asociar",
+        "none": "No hay más repositorios disponibles"
+      }
+    }
+  },
+  "newRepoForm": {
+    "languages": {
+      "en": {
+        "title": "New repository",
+        "url": "URL",
+        "path": "Local path",
+        "create": "Add repository",
+        "errorUrlRequired": "The URL is required",
+        "errorUrlExists": "A repository with this URL already exists",
+        "errorGeneric": "Could not create the repository:"
+      },
+      "es": {
+        "title": "Nuevo repositorio",
+        "url": "URL",
+        "path": "Ruta local",
+        "create": "Añadir repositorio",
+        "errorUrlRequired": "La URL es obligatoria",
+        "errorUrlExists": "Ya existe un repositorio con esta URL",
+        "errorGeneric": "No se ha podido crear el repositorio:"
+      }
+    }
+  },
+  "pathField": {
+    "languages": {
+      "en": {
+        "browse": "Browse…",
+        "notFound": "This folder does not exist",
+        "dialogTitle": "Select the folder of the local repository"
+      },
+      "es": {
+        "browse": "Examinar…",
+        "notFound": "Esta carpeta no existe",
+        "dialogTitle": "Selecciona la carpeta del repositorio local"
+      }
+    }
+  },
+  "projectCatalog": {
+    "languages": {
+      "en": {
+        "title": "Projects",
+        "name": "Name",
+        "slug": "Slug",
+        "status": "Status",
+        "deadline": "Deadline",
+        "repos": "Repositories",
+        "empty": "No projects yet"
+      },
+      "es": {
+        "title": "Proyectos",
+        "name": "Nombre",
+        "slug": "Slug",
+        "status": "Estado",
+        "deadline": "Fecha límite",
+        "repos": "Repositorios",
+        "empty": "Aún no hay proyectos"
+      }
+    }
+  },
+  "appLayout": {
+    "languages": {
+      "en": {
+        "resizeSidebar": "Resize sidebar"
+      },
+      "es": {
+        "resizeSidebar": "Cambiar el ancho del sidebar"
+      }
+    }
+  },
+  "resizeHandle": {
+    "languages": {
+      "en": {
+        "hint": "Drag to resize. Double-click to restore the default size."
+      },
+      "es": {
+        "hint": "Arrastra para cambiar el tamaño. Doble clic para volver al tamaño por defecto."
+      }
+    }
   }
 }

@@ -1,7 +1,9 @@
 //! SQLite access: connection, migrations and per-entity repositories.
 
 pub mod projects;
+pub mod repos;
 pub mod slug;
+pub mod statuses;
 
 use rusqlite::Connection;
 use std::path::Path;

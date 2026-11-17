@@ -34,10 +34,57 @@
     @apply m-0 flex h-screen w-screen p-0;
   }
 
+  /* Width comes from settings.json (inline style); the border is the ResizeHandle. */
   .sidebar {
-    @apply m-0 flex h-full w-60 shrink-0 flex-col p-0;
+    @apply m-0 flex h-full shrink-0 flex-col p-0;
     background-color: var(--theme-color-sidebar-bg);
-    border-right: 1px solid var(--theme-color-sidebar-border);
+  }
+
+  /* ---------- Draggable separator ---------- */
+  .resize-handle {
+    @apply relative z-10 shrink-0 outline-none;
+    background-color: var(--theme-color-resize-handle);
+    transition: background-color 120ms;
+  }
+
+  /* Invisible grab area, wider than the visible 1px line. */
+  .resize-handle::after {
+    @apply absolute;
+    content: "";
+  }
+
+  .resize-handle--horizontal {
+    @apply h-full w-px cursor-col-resize;
+  }
+
+  .resize-handle--horizontal::after {
+    @apply inset-y-0 -left-[3px] -right-[3px];
+  }
+
+  .resize-handle--vertical {
+    @apply h-px w-full cursor-row-resize;
+  }
+
+  .resize-handle--vertical::after {
+    @apply inset-x-0 -top-[3px] -bottom-[3px];
+  }
+
+  .resize-handle:hover,
+  .resize-handle:focus-visible,
+  .resize-handle--active {
+    background-color: var(--theme-color-resize-handle-active);
+    box-shadow: 0 0 0 1px var(--theme-color-resize-handle-active);
+  }
+
+  /* While dragging: no text selection and the resize cursor everywhere. */
+  body.is-resizing-horizontal,
+  body.is-resizing-horizontal * {
+    @apply cursor-col-resize select-none;
+  }
+
+  body.is-resizing-vertical,
+  body.is-resizing-vertical * {
+    @apply cursor-row-resize select-none;
   }
 
   .main-content {
@@ -102,5 +149,233 @@
   .sidebar__footer {
     @apply shrink-0 py-2;
     border-top: 1px solid var(--theme-color-sidebar-border);
+  }
+
+  /* ---------- Settings view: menu (left) + selected setting (right) ---------- */
+  .settings-view {
+    @apply flex h-full min-h-0;
+  }
+
+  .settings-view__menu {
+    @apply h-full w-48 shrink-0 overflow-y-auto py-3;
+    border-right: 1px solid var(--theme-color-sidebar-border);
+  }
+
+  .settings-view__panel {
+    @apply h-full min-w-0 flex-1 overflow-y-auto;
+  }
+
+  .settings-menu {
+    @apply m-0 list-none p-0;
+  }
+
+  .settings-menu__entry {
+    @apply mx-2 cursor-pointer truncate rounded-md px-3 py-1.5;
+    color: var(--theme-color-menu-item-text);
+  }
+
+  .settings-menu__entry:hover {
+    background-color: var(--theme-color-menu-item-hover-bg);
+  }
+
+  .settings-menu__entry--active {
+    background-color: var(--theme-color-menu-item-active-bg);
+    color: var(--theme-color-menu-item-active-text);
+  }
+
+  .settings-panel {
+    @apply flex max-w-4xl flex-col gap-8 p-6;
+  }
+
+  .settings-panel__title {
+    @apply m-0 mb-4;
+    font-size: 1.15em;
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  /* ---------- Forms ---------- */
+  .form-grid {
+    @apply grid grid-cols-2 gap-4;
+  }
+
+  .form-field {
+    @apply flex min-w-0 flex-col gap-1;
+  }
+
+  .form-field__label {
+    color: var(--theme-color-text-muted);
+    font-size: var(--theme-font-size-small);
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .form-field__hint {
+    color: var(--theme-color-text-muted);
+    font-size: var(--theme-font-size-small);
+  }
+
+  .form-field__error {
+    color: var(--theme-color-danger);
+    font-size: var(--theme-font-size-small);
+  }
+
+  .form-input {
+    @apply w-full min-w-0 rounded-md px-2 py-1.5 outline-none;
+    background-color: var(--theme-color-input-bg);
+    border: 1px solid var(--theme-color-input-border);
+    color: var(--theme-color-text);
+    font: inherit;
+  }
+
+  .form-input:focus {
+    border-color: var(--theme-color-input-focus-border);
+  }
+
+  .form-input:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+
+  .form-input--error,
+  .form-input--error:focus {
+    border-color: var(--theme-color-danger);
+  }
+
+  .form-actions {
+    @apply mt-4 flex gap-2;
+  }
+
+  .form-message {
+    @apply m-0 mt-2;
+    font-size: var(--theme-font-size-small);
+  }
+
+  .form-message--success {
+    color: var(--theme-color-success);
+  }
+
+  .form-message--error {
+    color: var(--theme-color-danger);
+  }
+
+  .button {
+    @apply shrink-0 cursor-pointer rounded-md border-0 px-3 py-1.5;
+    font: inherit;
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .button:disabled {
+    @apply cursor-default opacity-50;
+  }
+
+  .button--primary {
+    background-color: var(--theme-color-button-bg);
+    color: var(--theme-color-button-text);
+  }
+
+  .button--primary:hover:not(:disabled) {
+    background-color: var(--theme-color-button-hover-bg);
+  }
+
+  .button--secondary {
+    background-color: var(--theme-color-button-secondary-bg);
+    color: var(--theme-color-button-secondary-text);
+  }
+
+  .button--secondary:hover:not(:disabled) {
+    background-color: var(--theme-color-button-secondary-hover-bg);
+  }
+
+  .path-field {
+    @apply flex items-center gap-2;
+  }
+
+  /* ---------- Projects setting ---------- */
+  .project-form__section {
+    @apply m-0 mt-6 mb-2;
+    font-size: 1em;
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .project-repo-list {
+    @apply m-0 flex list-none flex-col gap-3 p-0;
+  }
+
+  .project-repo-list__empty,
+  .repo-picker__empty,
+  .catalog__empty {
+    @apply m-0;
+    color: var(--theme-color-text-muted);
+  }
+
+  .project-repo-item {
+    @apply flex flex-col gap-2 rounded-md p-3;
+    border: 1px solid var(--theme-color-table-border);
+  }
+
+  .project-repo-item__header {
+    @apply flex items-center justify-between gap-2;
+  }
+
+  .project-repo-item__url {
+    @apply min-w-0 truncate;
+    font-family: var(--theme-font-family-mono);
+  }
+
+  .repo-picker {
+    @apply mt-4 flex items-end gap-2;
+  }
+
+  .repo-picker .form-field {
+    @apply flex-1;
+  }
+
+  .new-repo-form {
+    @apply m-0 mt-4 flex flex-col gap-3 rounded-md p-3;
+    border: 1px solid var(--theme-color-table-border);
+  }
+
+  .new-repo-form__title {
+    @apply px-1;
+    color: var(--theme-color-text-muted);
+    font-size: var(--theme-font-size-small);
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .new-repo-form .form-actions {
+    @apply mt-0;
+  }
+
+  /* ---------- Catalog tables ---------- */
+  .catalog__table {
+    @apply w-full border-collapse;
+  }
+
+  .catalog__table th,
+  .catalog__table td {
+    @apply px-3 py-2 text-left;
+    border-bottom: 1px solid var(--theme-color-table-border);
+  }
+
+  .catalog__table th {
+    background-color: var(--theme-color-table-header-bg);
+    color: var(--theme-color-text-muted);
+    font-size: var(--theme-font-size-small);
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .catalog__table .catalog__cell--number {
+    @apply text-right;
+  }
+
+  .catalog__row {
+    @apply cursor-pointer;
+  }
+
+  .catalog__row:hover {
+    background-color: var(--theme-color-table-row-hover-bg);
+  }
+
+  .catalog__row--selected,
+  .catalog__row--selected:hover {
+    background-color: var(--theme-color-table-row-selected-bg);
   }
 }

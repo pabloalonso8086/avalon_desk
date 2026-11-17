@@ -14,6 +14,8 @@ pub const DOCS_DIR: &str = "docs";
 pub const DATABASE_FILE: &str = "avalon.db";
 
 pub struct AppPaths {
+    /// Folder of the executable.
+    pub root: PathBuf,
     pub database_dir: PathBuf,
     pub notes_dir: PathBuf,
 }
@@ -28,6 +30,7 @@ impl AppPaths {
             .to_path_buf();
 
         let paths = Self {
+            root: root.clone(),
             database_dir: root.join(DATABASE_DIR),
             notes_dir: root.join(NOTES_DIR),
         };
@@ -38,5 +41,10 @@ impl AppPaths {
 
     pub fn database_file(&self) -> PathBuf {
         self.database_dir.join(DATABASE_FILE)
+    }
+
+    /// `settings.json`, next to the executable.
+    pub fn settings_file(&self) -> PathBuf {
+        self.root.join(crate::settings::SETTINGS_FILE)
     }
 }

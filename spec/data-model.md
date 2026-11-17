@@ -24,6 +24,16 @@ Hay dos lugares de almacenamiento, y **cada ajuste debe especificar en cuál se 
 - **`settings.json`**, junto al ejecutable. Sirve para los ajustes de la app, y se puede editar a mano sin entrar en la pantalla de Ajustes. Ejemplos: la carpeta de notas y el idioma de la interfaz.
 - **Base de datos:** los datos que se gestionan desde Ajustes. Ejemplo: la creación de proyectos.
 
+`settings.json` se crea con los valores por defecto si no existe. Al arrancar, se completan las claves que falten y se respetan las desconocidas. Si no es un JSON válido, se renombra a `settings.invalid.json` y se crea uno nuevo por defecto.
+
+Claves actuales:
+
+| Clave | Descripción | Por defecto |
+|---|---|---|
+| `layout.sidebar.width` | Ancho actual del sidebar (px). | 240 |
+| `layout.sidebar.default_width` | Ancho al que vuelve con doble clic en el separador. | 240 |
+| `layout.sidebar.min_width` / `max_width` | Límites del arrastre. | 180 / 480 |
+
 ## Jerarquía de ítems
 
 ```
