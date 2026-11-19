@@ -2,7 +2,7 @@ import { useTranslation } from "~/i18n";
 import { SettingsMenuEntry } from "./SettingsMenuEntry";
 
 /** Available settings, in menu order. Each key is also its text key in i18n (`settingsMenu`). */
-export const SETTINGS = ["projects"] as const;
+export const SETTINGS = ["theme", "projects"] as const;
 export type SettingId = (typeof SETTINGS)[number];
 
 /** Left column of the Settings view: vertical `<ul>` menu. */

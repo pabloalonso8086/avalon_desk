@@ -1,5 +1,5 @@
 import { useTranslation } from "~/i18n";
-import logoUrl from "~/assets/logo.svg";
+import logoUrl from "~/assets/avalon_logo.svg";
 
 export function AppLogo() {
   const t = useTranslation("appLogo");

@@ -15,13 +15,29 @@ use serde_json::{Map, Value};
 pub const SETTINGS_FILE: &str = "settings.json";
 const INVALID_SETTINGS_FILE: &str = "settings.invalid.json";
 
-#[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
+/// Theme used when the file has none (or an empty one).
+pub const DEFAULT_THEME: &str = "light";
+
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(default)]
 pub struct AppSettings {
+    /// Interface theme (e.g. `light`, `dark`). The frontend falls back to the default
+    /// theme if it does not know this one.
+    pub theme: String,
     pub layout: LayoutSettings,
     /// Keys this version does not know. Kept so manual edits are never lost.
     #[serde(flatten)]
     pub extra: Map<String, Value>,
+}
+
+impl Default for AppSettings {
+    fn default() -> Self {
+        Self {
+            theme: DEFAULT_THEME.to_string(),
+            layout: LayoutSettings::default(),
+            extra: Map::new(),
+        }
+    }
 }
 
 #[derive(Debug, Clone, Default, PartialEq, Serialize, Deserialize)]
@@ -72,8 +88,16 @@ impl PanelSize {
     }
 }
 
+/// Trimmed theme name, or the default theme when empty.
+fn normalize_theme(theme: &str) -> String {
+    let theme = theme.trim();
+    let theme = if theme.is_empty() { DEFAULT_THEME } else { theme };
+    theme.to_string()
+}
+
 impl AppSettings {
     fn normalize(&mut self) {
+        self.theme = normalize_theme(&self.theme);
         self.layout.sidebar.normalize();
     }
 }
@@ -104,6 +128,14 @@ impl Settings {
         settings.layout.sidebar.width = settings.layout.sidebar.clamp(width);
         write(&self.path, &settings)?;
         Ok(settings.layout.sidebar.clone())
+    }
+
+    /// Saves the interface theme and returns the stored one.
+    pub fn set_theme(&self, theme: &str) -> io::Result<String> {
+        let mut settings = self.lock();
+        settings.theme = normalize_theme(theme);
+        write(&self.path, &settings)?;
+        Ok(settings.theme.clone())
     }
 
     fn lock(&self) -> std::sync::MutexGuard<'_, AppSettings> {
@@ -189,6 +221,19 @@ mod tests {
         assert_eq!((sidebar.min_width, sidebar.max_width), (200, 400));
         assert_eq!(sidebar.width, 400);
         assert_eq!(settings.set_sidebar_width(10).unwrap().width, 200);
+    }
+
+    #[test]
+    fn saves_theme_and_defaults_empty_one() {
+        let path = temp_dir("theme").join(SETTINGS_FILE);
+        fs::write(&path, r#"{"theme":"  "}"#).unwrap();
+
+        let settings = Settings::load(path.clone()).unwrap();
+        assert_eq!(settings.get().theme, DEFAULT_THEME);
+        assert_eq!(settings.set_theme(" dark ").unwrap(), "dark");
+
+        let saved: Value = serde_json::from_str(&fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(saved["theme"], "dark");
     }
 
     #[test]

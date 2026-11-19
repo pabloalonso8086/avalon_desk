@@ -6,6 +6,40 @@
 @import "./themes/light.css";
 @import "./themes/dark.css";
 
+/* ---------- Fonts (files in src/assets/fonts) ---------- */
+/* Montserrat Light is the base text weight; SemiBold covers the bold weight. */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat/Montserrat-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat/Montserrat-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat/Montserrat-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat/Montserrat-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* ---------- Base ---------- */
 @layer base {
   html,
@@ -151,6 +185,101 @@
     border-top: 1px solid var(--theme-color-sidebar-border);
   }
 
+  /* ---------- Project view: ToDo (left) + minion (right) ---------- */
+  .main-view {
+    @apply flex h-full min-h-0;
+  }
+
+  .main-view[hidden] {
+    @apply hidden;
+  }
+
+  .main-view__todo {
+    @apply h-full shrink-0 overflow-y-auto;
+  }
+
+  .main-view__minion {
+    @apply h-full min-w-0 flex-1;
+  }
+
+  .minion {
+    @apply h-full;
+  }
+
+  .todo {
+    @apply p-4;
+  }
+
+  .todo__title {
+    @apply m-0 mb-3;
+    font-size: 1.15em;
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .todo__message {
+    @apply m-0;
+    color: var(--theme-color-text-muted);
+  }
+
+  .todo__message--error {
+    color: var(--theme-color-danger);
+  }
+
+  /* Every level is indented, including the top one. */
+  .todo-list {
+    @apply m-0 list-none py-0 pr-0 pl-4;
+  }
+
+  .todo-item__row {
+    @apply flex min-w-0 items-center gap-2 rounded-md px-1 py-1;
+  }
+
+  .todo-item__row:hover {
+    background-color: var(--theme-color-table-row-hover-bg);
+  }
+
+  .todo-item__toggle,
+  .todo-item__toggle-spacer {
+    @apply inline-flex h-5 w-5 shrink-0 items-center justify-center;
+  }
+
+  .todo-item__toggle {
+    @apply cursor-pointer rounded border-0 bg-transparent p-0;
+    color: var(--theme-color-text-muted);
+    font: inherit;
+  }
+
+  .todo-item__toggle:hover {
+    color: var(--theme-color-text);
+  }
+
+  .todo-item__type {
+    @apply shrink-0 rounded px-1.5 uppercase;
+    border: 1px solid var(--theme-color-table-border);
+    color: var(--theme-color-text-muted);
+    font-size: var(--theme-font-size-small);
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .todo-item__type--epic {
+    border-color: var(--theme-color-accent);
+    color: var(--theme-color-accent);
+  }
+
+  .todo-item__name {
+    @apply min-w-0 flex-1 truncate;
+  }
+
+  .todo-item--epic > .todo-item__row .todo-item__name {
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  .todo-item__status {
+    @apply shrink-0;
+    color: var(--theme-color-text-muted);
+    font-size: var(--theme-font-size-small);
+  }
+
   /* ---------- Settings view: menu (left) + selected setting (right) ---------- */
   .settings-view {
     @apply flex h-full min-h-0;
@@ -191,6 +320,96 @@
     @apply m-0 mb-4;
     font-size: 1.15em;
     font-weight: var(--theme-font-weight-bold);
+  }
+
+  /* ---------- Theme setting: one miniature per theme ---------- */
+  .theme-picker {
+    @apply flex flex-wrap gap-4;
+  }
+
+  .theme-option {
+    @apply flex cursor-pointer flex-col items-center gap-1.5 rounded-lg border-0 bg-transparent p-1.5;
+    color: var(--theme-color-text);
+    font: inherit;
+    outline: 2px solid transparent;
+  }
+
+  .theme-option:hover {
+    outline-color: var(--theme-color-input-border);
+  }
+
+  .theme-option:focus-visible {
+    outline-color: var(--theme-color-input-focus-border);
+  }
+
+  .theme-option--selected,
+  .theme-option--selected:hover {
+    outline-color: var(--theme-color-accent);
+  }
+
+  .theme-option__name {
+    font-size: var(--theme-font-size-small);
+  }
+
+  .theme-option--selected .theme-option__name {
+    font-weight: var(--theme-font-weight-bold);
+  }
+
+  /* The miniature uses the variables of its own data-theme, not the active theme. */
+  .theme-preview {
+    @apply flex h-20 w-32 overflow-hidden rounded-md;
+    background-color: var(--theme-color-app-bg);
+    border: 1px solid var(--theme-color-table-border);
+  }
+
+  .theme-preview__sidebar {
+    @apply flex w-9 shrink-0 flex-col gap-1 p-1.5;
+    background-color: var(--theme-color-sidebar-bg);
+  }
+
+  .theme-preview__logo {
+    @apply mb-1 h-2.5 w-2.5 rounded-sm;
+    background-color: var(--theme-color-accent);
+  }
+
+  .theme-preview__menu-item {
+    @apply h-1.5 rounded-sm;
+    background-color: var(--theme-color-menu-item-hover-bg);
+  }
+
+  .theme-preview__menu-item--active {
+    background-color: var(--theme-color-menu-item-active-bg);
+  }
+
+  .theme-preview__separator {
+    @apply w-px shrink-0;
+    background-color: var(--theme-color-resize-handle);
+  }
+
+  .theme-preview__main {
+    @apply flex min-w-0 flex-1 flex-col gap-1.5 p-2;
+    background-color: var(--theme-color-main-bg);
+  }
+
+  .theme-preview__title {
+    @apply h-1.5 w-3/4 rounded-sm;
+    background-color: var(--theme-color-text);
+  }
+
+  .theme-preview__text {
+    @apply h-1 w-1/2 rounded-sm;
+    background-color: var(--theme-color-text-muted);
+  }
+
+  .theme-preview__input {
+    @apply h-3 w-full rounded-sm;
+    background-color: var(--theme-color-input-bg);
+    border: 1px solid var(--theme-color-input-border);
+  }
+
+  .theme-preview__button {
+    @apply mt-auto h-3 w-8 self-end rounded-sm;
+    background-color: var(--theme-color-button-bg);
   }
 
   /* ---------- Forms ---------- */

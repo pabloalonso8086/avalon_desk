@@ -46,10 +46,46 @@
   "settingsMenu": {
     "languages": {
       "en": {
+        "theme": "Theme",
         "projects": "Projects"
       },
       "es": {
+        "theme": "Tema",
         "projects": "Proyectos"
+      }
+    }
+  },
+  "themeSettings": {
+    "languages": {
+      "en": {
+        "title": "Theme",
+        "saveError": "Could not save the theme:"
+      },
+      "es": {
+        "title": "Tema",
+        "saveError": "No se ha podido guardar el tema:"
+      }
+    }
+  },
+  "themePicker": {
+    "languages": {
+      "en": {
+        "label": "Interface theme"
+      },
+      "es": {
+        "label": "Tema de la interfaz"
+      }
+    }
+  },
+  "themeOption": {
+    "languages": {
+      "en": {
+        "light": "Light",
+        "dark": "Dark"
+      },
+      "es": {
+        "light": "Claro",
+        "dark": "Oscuro"
       }
     }
   },
@@ -212,6 +248,58 @@
       },
       "es": {
         "hint": "Arrastra para cambiar el tamaño. Doble clic para volver al tamaño por defecto."
+      }
+    }
+  },
+  "mainView": {
+    "languages": {
+      "en": {
+        "resizeColumns": "Resize the ToDo column"
+      },
+      "es": {
+        "resizeColumns": "Cambiar el ancho de la columna ToDo"
+      }
+    }
+  },
+  "todo": {
+    "languages": {
+      "en": {
+        "title": "ToDo",
+        "loading": "Loading…",
+        "empty": "This project has no epics, macros or tasks yet",
+        "loadError": "Could not load the items:"
+      },
+      "es": {
+        "title": "ToDo",
+        "loading": "Cargando…",
+        "empty": "Este proyecto aún no tiene épicas, macros ni tareas",
+        "loadError": "No se han podido cargar los ítems:"
+      }
+    }
+  },
+  "todoItemToggle": {
+    "languages": {
+      "en": {
+        "expand": "Expand",
+        "collapse": "Collapse"
+      },
+      "es": {
+        "expand": "Expandir",
+        "collapse": "Plegar"
+      }
+    }
+  },
+  "todoItemType": {
+    "languages": {
+      "en": {
+        "epic": "Epic",
+        "macro": "Macro",
+        "task": "Task"
+      },
+      "es": {
+        "epic": "Épica",
+        "macro": "Macro",
+        "task": "Tarea"
       }
     }
   }

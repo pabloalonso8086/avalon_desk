@@ -1,5 +1,6 @@
 //! SQLite access: connection, migrations and per-entity repositories.
 
+pub mod items;
 pub mod projects;
 pub mod repos;
 pub mod slug;

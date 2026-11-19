@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Avalon">
+  <title>Avalon</title>
+
+  <!-- Fondo transparente. Bloques planos (relleno pastel + borde del mismo tono mas intenso),
+       todas las esquinas en punta, sin curvas. Un mismo grosor (20) para los tres elementos.
+       La A y los <> comparten la misma recta (pendiente 0.55): son el mismo trazo partido.
+       Los extremos del lado derecho estan cortados en paralelo al check, como si los cortara. -->
+  <g transform="translate(-6 3)" stroke-width="4" stroke-linejoin="miter" stroke-miterlimit="12">
+
+    <!-- La A (lila) -->
+    <path
+      d="M65.64 168.13 L128 54.75 L175.96 141.93 L191.28 128.3 L128 13.25 L48.12 158.49 Z"
+      fill="#C4B5FD"
+      stroke="#7C3AED"
+    />
+
+    <!-- Los <> (azul): continuacion exacta de las patas de la A -->
+    <g fill="#93C5FD" stroke="#2563EB">
+      <path d="M42.82 168.12 L25.29 200 L42.82 231.88 L60.34 222.24 L48.11 200 L60.34 177.76 Z" />
+      <path d="M196.71 179.68 L207.89 200 L195.66 222.24 L213.18 231.88 L230.71 200 L212.04 166.04 Z" />
+    </g>
+
+    <!-- El check (verde): baja hasta el fondo, cruza la separacion de los dos bloques
+         y sale por la derecha = la "/" de </> -->
+    <path
+      d="M77.85 182.8 L116.31 236.89 L242.65 124.47 L229.35 109.53 L119.69 207.11 L94.15 171.2 Z"
+      fill="#86EFAC"
+      stroke="#16A34A"
+    />
+  </g>
+</svg>

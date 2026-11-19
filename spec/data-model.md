@@ -30,6 +30,7 @@ Claves actuales:
 
 | Clave | Descripción | Por defecto |
 |---|---|---|
+| `theme` | Tema de la interfaz (`light`, `dark`). Si está vacío, se usa el de por defecto. | `light` |
 | `layout.sidebar.width` | Ancho actual del sidebar (px). | 240 |
 | `layout.sidebar.default_width` | Ancho al que vuelve con doble clic en el separador. | 240 |
 | `layout.sidebar.min_width` / `max_width` | Límites del arrastre. | 180 / 480 |

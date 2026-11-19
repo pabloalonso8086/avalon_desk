@@ -1,11 +1,11 @@
 /* Light theme — must define every variable in _template.css */
-:root[data-theme="light"] {
+[data-theme="light"] {
   /* Fonts */
-  --theme-font-family-base: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --theme-font-family-base: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
   --theme-font-family-mono: "Cascadia Code", Consolas, monospace;
   --theme-font-size-base: 14px;
   --theme-font-size-small: 12px;
-  --theme-font-weight-normal: 400;
+  --theme-font-weight-normal: 300;
   --theme-font-weight-bold: 600;
 
   /* App */

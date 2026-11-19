@@ -6,8 +6,12 @@
  *   2. Replace `template` in the selector with the theme name.
  *   3. Give every variable a value (none may be left out).
  *   4. Import the new file in `src/styles/global.css`.
+ *   5. Add its name to THEMES in `index.ts` (and its text to `themeOption` in i18n.json).
+ *
+ * The selector has no `:root` on purpose: any element with `data-theme` gets the
+ * variables, which is how the theme miniatures in Settings show each theme.
  */
-:root[data-theme="template"] {
+[data-theme="template"] {
   /* Fonts */
   --theme-font-family-base: ;
   --theme-font-family-mono: ;

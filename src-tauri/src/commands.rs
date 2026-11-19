@@ -9,6 +9,7 @@ use std::sync::Mutex;
 use rusqlite::Connection;
 use tauri::State;
 
+use crate::db::items::{self, ProjectTree};
 use crate::db::projects::{self, ProjectCatalogEntry, ProjectDetail, ProjectInput, ProjectMenuEntry};
 use crate::db::repos::{self, Repo};
 use crate::db::statuses::{self, Status};
@@ -56,6 +57,13 @@ pub fn create_project(db: State<'_, Database>, input: ProjectInput) -> Result<Pr
 pub fn update_project(db: State<'_, Database>, id: i64, input: ProjectInput) -> Result<ProjectDetail, String> {
     let conn = db.0.lock().map_err(to_message)?;
     projects::update(&conn, id, &input).map_err(to_message)
+}
+
+/// Epics, macros and tasks of one project, for the ToDo view.
+#[tauri::command]
+pub fn get_project_tree(db: State<'_, Database>, project_id: i64) -> Result<ProjectTree, String> {
+    let conn = db.0.lock().map_err(to_message)?;
+    items::project_tree(&conn, project_id).map_err(to_message)
 }
 
 #[tauri::command]
@@ -106,4 +114,10 @@ pub fn get_settings(settings: State<'_, Settings>) -> AppSettings {
 #[tauri::command]
 pub fn set_sidebar_width(settings: State<'_, Settings>, width: u32) -> Result<PanelSize, String> {
     settings.set_sidebar_width(width).map_err(to_message)
+}
+
+/// Saves the interface theme in `settings.json` and returns the stored one.
+#[tauri::command]
+pub fn set_theme(settings: State<'_, Settings>, theme: String) -> Result<String, String> {
+    settings.set_theme(&theme).map_err(to_message)
 }

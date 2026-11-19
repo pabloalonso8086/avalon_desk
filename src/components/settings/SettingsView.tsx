@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ProjectSettings } from "./projects/ProjectSettings";
-import { SettingsMenu } from "./SettingsMenu";
+import { ThemeSettings } from "./theme/ThemeSettings";
+import { SETTINGS, SettingsMenu } from "./SettingsMenu";
 import type { SettingId } from "./SettingsMenu";
 
 /**
@@ -9,7 +10,7 @@ import type { SettingId } from "./SettingsMenu";
  * and discards unsaved changes.
  */
 export function SettingsView() {
-  const [active, setActive] = useState<SettingId>("projects");
+  const [active, setActive] = useState<SettingId>(SETTINGS[0]);
   const [resetKey, setResetKey] = useState(0);
 
   function select(setting: SettingId) {
@@ -23,6 +24,7 @@ export function SettingsView() {
         <SettingsMenu active={active} onSelect={select} />
       </aside>
       <section className="settings-view__panel">
+        {active === "theme" && <ThemeSettings key={resetKey} />}
         {active === "projects" && <ProjectSettings key={resetKey} />}
       </section>
     </div>

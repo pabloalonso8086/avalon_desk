@@ -1,4 +1,5 @@
 import { invoke, isTauri } from "@tauri-apps/api/core";
+import { DEFAULT_THEME } from "~/styles/themes";
 
 /** Size of a resizable panel, in pixels (`settings.json`). */
 export type PanelSize = {
@@ -10,6 +11,8 @@ export type PanelSize = {
 
 /** Settings stored in `settings.json`, next to the executable. */
 export type AppSettings = {
+  /** Interface theme. May be unknown if `settings.json` was edited by hand. */
+  theme: string;
   layout: {
     sidebar: PanelSize;
   };
@@ -24,7 +27,7 @@ export const DEFAULT_SIDEBAR_SIZE: PanelSize = {
 };
 
 export async function getSettings(): Promise<AppSettings> {
-  if (!isTauri()) return { layout: { sidebar: DEFAULT_SIDEBAR_SIZE } };
+  if (!isTauri()) return { theme: DEFAULT_THEME, layout: { sidebar: DEFAULT_SIDEBAR_SIZE } };
   return invoke<AppSettings>("get_settings");
 }
 
@@ -32,4 +35,10 @@ export async function getSettings(): Promise<AppSettings> {
 export async function setSidebarWidth(width: number): Promise<PanelSize | null> {
   if (!isTauri()) return null;
   return invoke<PanelSize>("set_sidebar_width", { width: Math.round(width) });
+}
+
+/** Saves the interface theme in `settings.json`. Returns the stored one (null outside Tauri). */
+export async function setTheme(theme: string): Promise<string | null> {
+  if (!isTauri()) return null;
+  return invoke<string>("set_theme", { theme });
 }

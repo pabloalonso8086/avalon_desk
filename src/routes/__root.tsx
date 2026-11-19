@@ -1,10 +1,12 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { AppLayout } from "~/components/layout/AppLayout";
+import { ProjectViewHost } from "~/components/layout/ProjectViewHost";
 import { DEFAULT_LANGUAGE, I18nProvider } from "~/i18n";
 import { DEFAULT_THEME } from "~/styles/themes";
+import { ThemeProvider } from "~/styles/themes/ThemeProvider";
 import globalCss from "~/styles/global.css?url";
-import logoUrl from "~/assets/logo.svg";
+import logoUrl from "~/assets/avalon_logo.svg";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -39,9 +41,12 @@ function RootDocument({ children }: { children: ReactNode }) {
 function RootComponent() {
   return (
     <I18nProvider>
-      <AppLayout>
-        <Outlet />
-      </AppLayout>
+      <ThemeProvider>
+        <AppLayout>
+          <Outlet />
+          <ProjectViewHost />
+        </AppLayout>
+      </ThemeProvider>
     </I18nProvider>
   );
 }

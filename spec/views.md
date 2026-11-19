@@ -63,6 +63,14 @@ Dos columnas:
 
 Pulsar una entrada del menú, aunque ya esté activa, vuelve a montar su panel: se recargan los datos y se pierden los cambios sin guardar.
 
+### Ajuste "Theme"
+
+Primera entrada del menú y ajuste seleccionado al abrir *Ajustes*. Se guarda en `settings.json` (`theme`).
+
+- Una miniatura por tema disponible (`Light` y `Dark`): un pequeño esquema de la app (sidebar, menú, texto, input y botón) pintado con los colores de ese tema. Al pulsarla se selecciona el tema; la seleccionada se marca con el color de acento. Los nombres de los temas se traducen con i18n.
+- El tema elegido se aplica en el momento (atributo `data-theme` de `<html>`) y se guarda al cambiarlo.
+- Si `settings.json` tiene un tema que no existe, se usa el tema por defecto, `Light`.
+
 ### Ajuste "Projects"
 
 Se guarda en la base de datos (`projects`, `repos`, `project_repos`).
