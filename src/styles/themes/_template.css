@@ -26,6 +26,14 @@
   --theme-color-text-muted: ;
   --theme-color-accent: ;
 
+  /* Title bar (custom window frame) */
+  --theme-color-titlebar-bg: ;
+  --theme-color-titlebar-border: ;
+  --theme-color-titlebar-button-text: ;
+  --theme-color-titlebar-button-hover-bg: ;
+  --theme-color-titlebar-close-hover-bg: ;
+  --theme-color-titlebar-close-hover-text: ;
+
   /* Sidebar (left column) */
   --theme-color-sidebar-bg: ;
   --theme-color-sidebar-border: ;

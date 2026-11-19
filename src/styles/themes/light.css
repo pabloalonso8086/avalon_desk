@@ -14,6 +14,14 @@
   --theme-color-text-muted: #656d76;
   --theme-color-accent: #6d28d9;
 
+  /* Title bar (custom window frame) */
+  --theme-color-titlebar-bg: #eef0f3;
+  --theme-color-titlebar-border: #e3e6ea;
+  --theme-color-titlebar-button-text: #1f2328;
+  --theme-color-titlebar-button-hover-bg: #dde1e6;
+  --theme-color-titlebar-close-hover-bg: #e81123;
+  --theme-color-titlebar-close-hover-text: #ffffff;
+
   /* Sidebar (left column) */
   --theme-color-sidebar-bg: #f6f7f9;
   --theme-color-sidebar-border: #e3e6ea;

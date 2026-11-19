@@ -64,13 +64,56 @@
 
 /* ---------- Layout: two columns, no gaps or margins ---------- */
 @layer components {
+  .app-shell {
+    @apply m-0 flex h-screen w-screen flex-col p-0;
+  }
+
   .app-layout {
-    @apply m-0 flex h-screen w-screen p-0;
+    @apply m-0 flex min-h-0 w-full flex-1 p-0;
+  }
+
+  /* ---------- Custom title bar (VS Code style) ---------- */
+  .title-bar {
+    @apply flex h-[30px] w-full shrink-0 select-none items-center;
+    background-color: var(--theme-color-titlebar-bg);
+    border-bottom: 1px solid var(--theme-color-titlebar-border);
+  }
+
+  .title-bar__logo {
+    @apply pointer-events-none mx-2 h-[18px] w-[18px] shrink-0;
+  }
+
+  .title-bar__drag {
+    @apply h-full min-w-0 flex-1;
+  }
+
+  .window-controls {
+    @apply flex h-full shrink-0;
+  }
+
+  .window-button {
+    @apply flex h-full w-[46px] cursor-default items-center justify-center border-0 bg-transparent p-0 outline-none;
+    color: var(--theme-color-titlebar-button-text);
+  }
+
+  .window-button:hover,
+  .window-button:focus-visible {
+    background-color: var(--theme-color-titlebar-button-hover-bg);
+  }
+
+  .window-button--close:hover,
+  .window-button--close:focus-visible {
+    background-color: var(--theme-color-titlebar-close-hover-bg);
+    color: var(--theme-color-titlebar-close-hover-text);
+  }
+
+  .window-button .icon {
+    @apply h-4 w-4;
   }
 
   /* Width comes from settings.json (inline style); the border is the ResizeHandle. */
   .sidebar {
-    @apply m-0 flex h-full shrink-0 flex-col p-0;
+    @apply m-0 flex h-full shrink-0 flex-col p-0 pt-2;
     background-color: var(--theme-color-sidebar-bg);
   }
 
@@ -127,20 +170,6 @@
   }
 
   /* ---------- Sidebar pieces ---------- */
-  .app-logo {
-    @apply flex shrink-0 items-center gap-2 px-4 py-4;
-  }
-
-  .app-logo__image {
-    @apply h-8 w-8;
-  }
-
-  .app-logo__name {
-    color: var(--theme-color-text);
-    font-size: 1.15em;
-    font-weight: var(--theme-font-weight-bold);
-  }
-
   .menu-item {
     @apply mx-2 block cursor-pointer truncate rounded-md px-3 py-1.5 no-underline;
     color: var(--theme-color-menu-item-text);
@@ -320,6 +349,18 @@
     @apply m-0 mb-4;
     font-size: 1.15em;
     font-weight: var(--theme-font-weight-bold);
+  }
+
+  /* ---------- Icons (unplugin-icons) ----------
+     Codicons: window chrome. Lucide: content, with a thinner stroke than its default 2. */
+  .icon {
+    @apply inline-block shrink-0;
+    vertical-align: middle;
+  }
+
+  .icon--lucide,
+  .icon--lucide * {
+    stroke-width: 1.5;
   }
 
   /* ---------- Theme setting: one miniature per theme ---------- */

@@ -8,49 +8,57 @@
   --theme-font-weight-normal: 300;
   --theme-font-weight-bold: 600;
 
-  /* App */
-  --theme-color-app-bg: #0f1115;
-  --theme-color-text: #e6e8eb;
-  --theme-color-text-muted: #9aa1ab;
-  --theme-color-accent: #a78bfa;
+  /* App — colors taken from the VS Code theme "One Dark Pro" */
+  --theme-color-app-bg: #282c34;
+  --theme-color-text: #abb2bf;
+  --theme-color-text-muted: #7f848e;
+  --theme-color-accent: #61afef;
+
+  /* Title bar (custom window frame) */
+  --theme-color-titlebar-bg: #21252b;
+  --theme-color-titlebar-border: #181a1f;
+  --theme-color-titlebar-button-text: #abb2bf;
+  --theme-color-titlebar-button-hover-bg: #2c313a;
+  --theme-color-titlebar-close-hover-bg: #e81123;
+  --theme-color-titlebar-close-hover-text: #ffffff;
 
   /* Sidebar (left column) */
-  --theme-color-sidebar-bg: #161a20;
-  --theme-color-sidebar-border: #262b33;
-  --theme-color-menu-item-text: #e6e8eb;
-  --theme-color-menu-item-hover-bg: #222831;
-  --theme-color-menu-item-active-bg: #2e2650;
-  --theme-color-menu-item-active-text: #ddd6fe;
+  --theme-color-sidebar-bg: #21252b;
+  --theme-color-sidebar-border: #181a1f;
+  --theme-color-menu-item-text: #abb2bf;
+  --theme-color-menu-item-hover-bg: #2c313a;
+  --theme-color-menu-item-active-bg: #3a3f4b;
+  --theme-color-menu-item-active-text: #d7dae0;
 
   /* Draggable separator */
-  --theme-color-resize-handle: #262b33;
-  --theme-color-resize-handle-active: #a78bfa;
+  --theme-color-resize-handle: #181a1f;
+  --theme-color-resize-handle-active: #61afef;
 
   /* Main content (right column) */
-  --theme-color-main-bg: #0f1115;
+  --theme-color-main-bg: #282c34;
 
   /* Forms */
-  --theme-color-input-bg: #161a20;
-  --theme-color-input-border: #30363d;
-  --theme-color-input-focus-border: #a78bfa;
-  --theme-color-danger: #f85149;
-  --theme-color-success: #3fb950;
+  --theme-color-input-bg: #1d1f23;
+  --theme-color-input-border: #3e4452;
+  --theme-color-input-focus-border: #61afef;
+  --theme-color-danger: #e06c75;
+  --theme-color-success: #98c379;
 
   /* Buttons */
-  --theme-color-button-bg: #7c3aed;
+  --theme-color-button-bg: #4d78cc;
   --theme-color-button-text: #ffffff;
-  --theme-color-button-hover-bg: #6d28d9;
-  --theme-color-button-secondary-bg: #222831;
-  --theme-color-button-secondary-text: #e6e8eb;
-  --theme-color-button-secondary-hover-bg: #2d343e;
+  --theme-color-button-hover-bg: #6087cf;
+  --theme-color-button-secondary-bg: #3a3f4b;
+  --theme-color-button-secondary-text: #d7dae0;
+  --theme-color-button-secondary-hover-bg: #404754;
 
   /* Tables */
-  --theme-color-table-border: #262b33;
-  --theme-color-table-header-bg: #161a20;
-  --theme-color-table-row-hover-bg: #1c2128;
-  --theme-color-table-row-selected-bg: #2e2650;
+  --theme-color-table-border: #3e4452;
+  --theme-color-table-header-bg: #21252b;
+  --theme-color-table-row-hover-bg: #2c313a;
+  --theme-color-table-row-selected-bg: #3a3f4b;
 
   /* Scrollbar */
-  --theme-color-scrollbar-thumb: #3a414c;
+  --theme-color-scrollbar-thumb: #4e5666;
   --theme-color-scrollbar-track: transparent;
 }

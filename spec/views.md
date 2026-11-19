@@ -26,10 +26,29 @@ Gestor de tareas que unifica proyectos, GitHub y un "ToDo" personal. También pe
 
 ## Layout principal (`AppLayout`)
 
-Un contenedor principal para los ajustes visuales globales, sin márgenes ni espacios, dividido en dos columnas redimensionables:
+Un contenedor principal para los ajustes visuales globales, sin márgenes ni espacios. Arriba, la barra de título; debajo, dos columnas redimensionables:
 
 1. **Sidebar** (izquierda): los menús.
 2. **Contenedor de la vista principal** (derecha).
+
+### Iconos
+
+Se usan dos sets, importados icono a icono con `unplugin-icons` (`~icons/<set>/<icono>`), así que solo entran en el bundle los que se usan:
+
+- **Codicons** (`codicon`): para el "chrome" de la app (barra de título, controles de ventana).
+- **Lucide** (`lucide`): para el contenido. Su trazo se afina a 1.5 (por defecto es 2).
+
+Los iconos toman el color del texto (`currentColor`), que sale de las variables del tema.
+
+### Barra de título (`TitleBar`)
+
+La ventana no usa el marco nativo (`decorations: false` en `tauri.conf.json`). En su lugar hay una barra fina (30 px) a todo el ancho, al estilo de VS Code:
+
+- Izquierda: el logo de la app. Sin texto.
+- Derecha: botones de minimizar, maximizar/restaurar y cerrar. Maximizar cambia a "restaurar" (icono y tooltip) cuando la ventana está maximizada. El hover de cerrar es rojo.
+- Toda la barra arrastra la ventana, y el doble clic la maximiza o la restaura.
+- Colores mediante variables de tema (`--theme-color-titlebar-*`). Tooltips en i18n.
+- Permisos de ventana en `src-tauri/capabilities/default.json`.
 
 ### Separador arrastrable (`ResizeHandle`)
 
@@ -45,12 +64,13 @@ El borde entre el sidebar y la vista principal se arrastra con el ratón para ca
 
 De arriba abajo:
 
-1. **Logo** de la aplicación.
-2. **Menú "Home"**: de momento sin funcionalidad.
-3. **Listado de proyectos**: cada proyecto es una entrada del menú.
+El logo de la aplicación no va en el sidebar, sino en la barra de título.
+
+1. **Menú "Home"**: de momento sin funcionalidad.
+2. **Listado de proyectos**: cada proyecto es una entrada del menú.
    - Va dentro de un div con scroll vertical si el contenido supera el alto.
    - El texto que no cabe en horizontal se corta con "…".
-4. **Menú "Ajustes"**: fijo en la parte inferior. Abre la vista *Ajustes* (ruta `/settings`). Cada ajuste indica dónde se guarda: en `settings.json` o en la base de datos (ver `spec/data-model.md`).
+3. **Menú "Ajustes"**: fijo en la parte inferior. Abre la vista *Ajustes* (ruta `/settings`). Cada ajuste indica dónde se guarda: en `settings.json` o en la base de datos (ver `spec/data-model.md`).
 
 El listado de proyectos se recarga cuando se crea o actualiza un proyecto (evento de ventana `avalon:projects-changed`).
 

@@ -6,9 +6,11 @@ import type { PanelSize } from "~/lib/api/settings";
 import { MainContent } from "./MainContent";
 import { ResizeHandle } from "./ResizeHandle";
 import { Sidebar } from "./Sidebar";
+import { TitleBar } from "~/components/titlebar/TitleBar";
 
 /**
- * Two-column app layout: menus on the left, main view on the right.
+ * App layout: custom title bar on top and, below it, two columns:
+ * menus on the left, main view on the right.
  * The separator between them is draggable; the sidebar size lives in settings.json.
  */
 export function AppLayout({ children }: { children: ReactNode }) {
@@ -36,18 +38,21 @@ export function AppLayout({ children }: { children: ReactNode }) {
   }
 
   return (
-    <div className="app-layout">
-      <Sidebar width={sidebar.width} />
-      <ResizeHandle
-        label={t("resizeSidebar")}
-        size={sidebar.width}
-        min={sidebar.min_width}
-        max={sidebar.max_width}
-        defaultSize={sidebar.default_width}
-        onResize={(width) => setSidebar((current) => ({ ...current, width }))}
-        onResizeEnd={save}
-      />
-      <MainContent>{children}</MainContent>
+    <div className="app-shell">
+      <TitleBar />
+      <div className="app-layout">
+        <Sidebar width={sidebar.width} />
+        <ResizeHandle
+          label={t("resizeSidebar")}
+          size={sidebar.width}
+          min={sidebar.min_width}
+          max={sidebar.max_width}
+          defaultSize={sidebar.default_width}
+          onResize={(width) => setSidebar((current) => ({ ...current, width }))}
+          onResizeEnd={save}
+        />
+        <MainContent>{children}</MainContent>
+      </div>
     </div>
   );
 }

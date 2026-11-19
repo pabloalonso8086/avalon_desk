@@ -1,13 +1,43 @@
 {
-  "appLogo": {
+  "titleBarLogo": {
     "languages": {
       "en": {
-        "name": "Avalon",
         "alt": "Avalon logo"
       },
       "es": {
-        "name": "Avalon",
         "alt": "Logotipo de Avalon"
+      }
+    }
+  },
+  "minimizeButton": {
+    "languages": {
+      "en": {
+        "label": "Minimize"
+      },
+      "es": {
+        "label": "Minimizar"
+      }
+    }
+  },
+  "maximizeButton": {
+    "languages": {
+      "en": {
+        "maximize": "Maximize",
+        "restore": "Restore"
+      },
+      "es": {
+        "maximize": "Maximizar",
+        "restore": "Restaurar"
+      }
+    }
+  },
+  "closeButton": {
+    "languages": {
+      "en": {
+        "label": "Close"
+      },
+      "es": {
+        "label": "Cerrar"
       }
     }
   },
